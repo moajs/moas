@@ -1,0 +1,24 @@
+{
+  "name": "moas",
+  "version": "1.0.0",
+  "description": "moas = moa server, runtime for test plugin",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm publish .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "preferGlobal": "true",
+  "bin": {
+    "nmm": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moajs/moas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/moajs/moas/issues"
+  },
+  "homepage": "https://github.com/moajs/moas#readme"
+}
