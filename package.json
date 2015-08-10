@@ -9,7 +9,7 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "nmm": "index.js"
+    "moas": "index.js"
   },
   "repository": {
     "type": "git",
