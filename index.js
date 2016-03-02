@@ -37,7 +37,7 @@ link();
 setTimeout(function(){
   process.chdir( current_path );
   var server = file_path + "/moas/node_modules/.bin/nodemon";
-  var clone = 'export MOAS_HOME=' + current_path + ' && ' + server + ' ' + file_path + '/moas/server/bin/www'
+  var clone = 'export MOAS_HOME=' + current_path + ' && ' + server + ' ' + file_path + '/moas/bin/www'
   
   console.log('[SERVER START] ' + clone)
   // Run external tool synchronously
@@ -85,7 +85,7 @@ process.on( 'SIGINT', function() {
 
 function link(){
   files.forEach(function(file){
-    var src   = home_dir + '/.moa/' + file;
+    var src   = file_path + '/node_modules/' + file;
     var dest  = current_path + '/' + file;
     fs.appendFileSync('.gitignore',dest+'\n');
     console.log(src + ' - ' + dest);
@@ -96,7 +96,7 @@ function link(){
 function unlink(){
   console.log('unlink...');
   files.forEach(function(file){
-    var src   = home_dir + '/.moa/' + file;
+    var src   = file_path + '/moas/' + file;
     var dest  = current_path + '/' + file;
     
     fs.unlinkSync(dest);
