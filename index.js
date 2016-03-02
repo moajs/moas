@@ -12,6 +12,8 @@ var files = __dirname.split('/');
 files.pop();
 file_path = files.join('/')
 
+console.log(file_path)
+
 var current_path = process.cwd();
 console.log(current_path);
 var home_dir = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
@@ -26,10 +28,7 @@ if (!which('git')) {
 }
 
 var files = [
-  'config',
-  'app/views/layouts',
-  'app/views/error.jade',
-  'app/middlewares/check_api_token.js'
+  'node_modules'
 ];
 
 link();
@@ -37,10 +36,10 @@ link();
 
 setTimeout(function(){
   process.chdir( current_path );
-  var server = file_path + "/node_modules/.bin/nodemon";
-  var clone = server + ' ~/.moa/bin/www'
+  var server = file_path + "/moas/node_modules/.bin/nodemon";
+  var clone = 'export MOAS_HOME=' + current_path + ' && ' + server + ' ' + file_path + '/moas/server/bin/www'
   
-  // console.log('[SERVER START] ' + clone)
+  console.log('[SERVER START] ' + clone)
   // Run external tool synchronously
   if (exec(clone).code !== 0) {
     echo('Error: Moa server start failed');
@@ -54,10 +53,6 @@ echo('');
 echo('Congratulations! moan finished!');
 echo('');
 
-echo('step 0: 【修改配置】 cp config/default.example.json to config/default.json');
-echo('step 1: 【启动服务器】 npm start');
-echo('step 2: 【创建脚手架】 moag user name:string password:string uid:object');
-echo('step 3: 【如果需要，移除已有脚手架】 moad user');
 echo('Have a good day! Moaer');
 
 process.stdin.resume();//so the program will not close instantly
@@ -68,20 +63,25 @@ function exitHandler(options, err) {
 process.on( 'exit', function() {
   console.log( "\nGracefully shutting down from exit" );
   // some other closing procedures go here
+  unlink()
   process.exit( );
 })
 
 process.on( 'SIGINT', function() {
   console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
   // some other closing procedures go here
+  unlink()
   process.exit( );
 })
 
 process.on( 'SIGINT', function() {
   console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
   // some other closing procedures go here
+  unlink()
   process.exit( );
 })
+
+
 
 function link(){
   files.forEach(function(file){
