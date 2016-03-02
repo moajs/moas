@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/moajs/moas/issues"
   },
-  "homepage": "https://github.com/moajs/moas#readme"
+  "homepage": "https://github.com/moajs/moas#readme",
+  "dependencies": {
+    "nodemon": "^1.9.1",
+    "shelljs": "^0.6.0"
+  }
 }
